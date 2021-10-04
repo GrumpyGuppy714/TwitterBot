@@ -1,5 +1,5 @@
 from flask import Flask, request
-from .twitter_functions import upsert_author
+from twitter_functions import upsert_author
 from data_model import DB
 
 app = Flask(__name__)
@@ -9,9 +9,10 @@ DB.init_app(app)
 
 
 @app.route('/')
-def landing:
+def landing():
     DB.create_all()
     return 'Welcome to my twitter app!'
+
 
 @app.route('/add_author')
 def add_author():
@@ -21,4 +22,3 @@ def add_author():
 
 
 app.run()
-
